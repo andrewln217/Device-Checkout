@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    
+     <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <base target="_top">
+        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+        
+     
+</head>
+    <body>
+        <?!= include('JavaScript'); ?>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <form id="myForm" onsubmit="handleFormSubmit(this)">
+   
+                        <p class="h5 mb-2 text-center">DEVICE DISTRIBUTION 2020-2021</p>
+                          <p> <strong>Student/Staff</strong></p>
+
+                          <div class="form-row">
+                            <div class="form-group col-md-3">
+                                <input type="text" class="form-control" id="idNum" name="idNum" placeholder="Id Number">
+
+                            </div>
+                            <div class="form-group col-md-1">
+                              <button class="btn btn-outline-secondary btn-sm" id="idNumSearch" type="button"><i class='fas fa-search'></i></button>
+                              <button class="btn btn-outline-secondary btn-sm" id="idNumSpinner" type="button" hidden><i class="fas fa-spinner fa-pulse"></i></button>
+                            </div>
+                            <div class="form-group col-md-3">
+                              <select class="form-control" id = "Grade" name = "Grade" required>
+                                <option value="" selected>Grade</option>
+                                <option>K</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                                <option>11</option>
+                                <option>12</option>
+                              </select>
+                            </div>
+                            <div class="form-group col-md-5">
+                              <!-- <label>School Name</label> -->
+                                <!-- <select id = "SchoolDL"> -->
+                              <select class="form-control" id = "SchoolDL" name = "SchoolDL" required>
+                                <option value="" selected>School Name ...</option>
+                                <option value="BP">Brookpath</option>
+                                <option value="GN">Grand North</option>
+                                <option value="IV">Indian Valley </option>
+                                <option value="KF">King Fort</option>
+                                <option value="MG">Margaret Grove</option>
+                                <option value="NH">New Hope</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group col-md-5">
+                                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input type="text" class="form-control" id="last_name" placeholder="Last Name" name="last_name">
+                            </div>
+                            <div class="form-group col-md-1">
+                              <button class="btn btn-outline-secondary btn-sm" id="idNameSpinner" type="button" hidden><i class="fas fa-spinner fa-pulse"></i></button>
+                              <button class="btn btn-outline-secondary btn-sm" id="idNameSearch" type="button"><i class='fas fa-search'></i></button>
+                            </div>
+                          </div>
+
+                        <div class="row">
+                          <div class="form-group col-md-12">
+                            <select class="form-control form-control-sm" style="color:Red" id="idLookupDL" name="idLookupDL" hidden>
+                                <option value="Search Result ..." selected>Id Lookup Result</option>
+                            </select>
+                          </div>
+                        </div>
+                        
+                        <!-- <hr class="my-2"> -->
+                        <p><strong> Check In </strong></p>
+
+                        
+                        
+                        <div class="row">
+                          <div class="form-group col-md-6">
+                            <!-- <label for="retDeviceSN">Device Returned</label> -->
+                            <input type="text" class="form-control" id="retDeviceSN" name="retDeviceSN" placeholder="Device Serial Number">
+                          </div>
+                        
+                          <div class="form-group col-md-6">
+                            <label>                           
+                              <input type="checkbox" name="retAdapter" id="retAdapter" value="Y">
+                              Includes Power Cable/Adapter
+                            </label>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="form-group col-md-12">
+                            <!-- <p>Device Type</p> -->
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="DeviceType" id="DeviceType" value="chromebook">
+                                <label class="form-check-label" for="chromebook">Chromebook</label>
+                              </div>   
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="DeviceType" id="DeviceType" value="iPad">
+                              <label class="form-check-label" for="ipad">iPad</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio" name="DeviceType" id="DeviceType" value="Laptop">
+                              <label class="form-check-label" for="Laptop">Laptop</label>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <!-- <hr class="my-2"> -->
+                        
+                        <p><strong> Check Out </strong></p>
+
+     
+                        <div class="row">
+                          <div class="form-group col-md-6">
+                            <!-- <label for="issDeviceSN">Device Issued</label> -->
+                            <input type="text" class="form-control" id="issDeviceSN" name="issDeviceSN" placeholder="Device Serial Number">
+                          </div>
+                          <div class="form-group col-md-6">
+                              <label>                           
+                                  <input type="checkbox" name="issAdapter" id="issAdapter" value="Y">
+                                    Includes Power Cable/Adapter
+                              </label>
+                          </div> 
+                        </div> 
+                        <br>
+                        <div>
+                            <!-- <label for="retDeviceSN">Device Returned</label> -->
+                            <input type="text" class="form-control" id="email" name="email" hidden>
+                        </div>
+                          
+                        <div class="form-group">
+                          <label for="notes"><strong> Notes </strong></label>
+                          <textarea class="form-control" id="notes" rows="1" name="notes" placeholder=""></textarea>
+                        </div>
+
+                        <button type="button" class="btn btn-primary btn-block" onclick="handleFormSubmit(myForm)">Submit</button>
+                        
+                    </form>
+                  </div>
+                </div>
+              </div>
+        
+        <script>
+        // Prevent forms from submitting.
+        function preventFormSubmit() {
+          var forms = document.querySelectorAll('form');
+          for (var i = 0; i < forms.length; i++) {
+            forms[i].addEventListener('submit', function(event) {
+            event.preventDefault();
+            });
+          }
+        }
+        
+        window.addEventListener('load', preventFormSubmit);
+        
+        document.getElementById("idNumSearch").addEventListener("click",getIdName);
+        document.getElementById("idNameSearch").addEventListener("click",getIdNumber);
+        document.getElementById("idLookupDL").addEventListener("change",putIdNumber);
+
+      
+        function handleFormSubmit(formObject) {
+          var tSchool = document.getElementById("SchoolDL").value;
+          var tGrade = document.getElementById("Grade").value;
+
+          if (tGrade.length > 0) {
+            if (tSchool.length > 0) {
+              google.script.run.processForm(formObject);
+              document.getElementById("myForm").reset();
+            } else {
+              alert("Please select School!");
+              document.getElementById("SchoolDL").focus();
+              preventFormSubmit();
+            }
+          } else {
+              alert( "Please select Grade!");
+              document.getElementById("Grade").focus();
+              preventFormSubmit();
+          }
+          
+        }
+        
+        function getIdName() {
+          var id_num = document.getElementById("idNum").value;
+
+          document.getElementById("idNumSpinner").hidden = false;
+          document.getElementById("idNumSearch").hidden = true;
+          google.script.run.withSuccessHandler(updateStudentName).getInfo(id_num);
+ 
+        }
+        
+        function updateStudentName(studentN) {
+          document.getElementById("last_name").value = studentN[0];
+          document.getElementById("first_name").value = studentN[1];
+          document.getElementById("email").value = studentN[2];
+
+          document.getElementById("idNumSpinner").hidden = true;
+          document.getElementById("idNumSearch").hidden = false;
+
+
+        } 
+        
+       function getIdNumber() {
+          var lname = document.getElementById("last_name").value;
+          var fname = document.getElementById("first_name").value;
+         
+          var id_name = fname+" "+lname;
+
+          document.getElementById("idNameSpinner").hidden = false;
+          document.getElementById("idNameSearch").hidden = true;
+          google.script.run.withSuccessHandler(updateStudentId).getNumber(id_name);
+        }
+        
+       function updateStudentId(idN) {
+         var numRow = idN.length;
+         var list = document.getElementById("idLookupDL");
+         list.options.length = 0;
+         
+         if (numRow > 1) { 
+           for (index in idN) {
+             if (index == 0) {
+               list.options[list.options.length] = new Option("Multiple Match Found ...");
+             }
+             list.options[list.options.length] = new Option(idN[index])
+             }
+           
+           document.getElementById("idLookupDL").hidden = false;
+
+           } else {
+              document.getElementById("idNum").value = idN[0][0];
+              document.getElementById("email").value = idN[0][2];
+
+              document.getElementById("idLookupDL").hidden = true;
+
+           }
+          
+          document.getElementById("idNameSpinner").hidden = true;
+          document.getElementById("idNameSearch").hidden = false;
+
+
+        } 
+        
+        function putIdNumber() {
+          
+          var selectedIdList = document.getElementById("idLookupDL").value;
+          var selectedId = selectedIdList.split(",");
+          document.getElementById("idNum").value = selectedId[0];
+          document.getElementById("email").value = selectedId[2];
+
+          document.getElementById("idLookupDL").hidden = true;
+
+         
+        }
+      </script>
+        
+    </body>
+</html>
